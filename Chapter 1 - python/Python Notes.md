@@ -2366,3 +2366,2597 @@ Congratulations! You've guessed the number.
 
 ---
 
+# Functions in Python
+
+Functions are a block of statements that perform a specific task.
+
+## Why Do We Use Functions?
+
+- To avoid repetition of code
+- To make code reusable
+- To reduce redundancy
+- To make code more organized and readable
+- To break down complex problems into smaller, manageable parts
+
+---
+
+## Function Definition and Function Call
+
+### Basic Structure:
+
+```python
+def function_name(parameters):
+    # code block
+    return value
+```
+
+- **def** - keyword to define a function
+- **function_name** - name of the function
+- **parameters** - variables that receive values (optional)
+- **return** - sends back a result (optional)
+
+---
+
+### Example 1: Function with Parameters
+
+```python
+def calc_sum(a, b):  # a and b are parameters
+    sum = a + b
+    print("The sum is:", sum)
+    return sum
+
+# Function call
+calc_sum(3, 5)  # 3 and 5 are arguments
+```
+
+**Output:**
+
+```
+The sum is: 8
+```
+
+**Explanation:**
+- Parameters (a, b) are the variables in the function definition
+- Arguments (3, 5) are the actual values passed when calling the function
+
+---
+
+### Example 2: Function without Parameters
+
+```python
+def print_hello():
+    print("Hello, World!")
+
+print_hello()
+```
+
+**Output:**
+
+```
+Hello, World!
+```
+
+---
+
+### Example 3: Average of Three Numbers
+
+```python
+def average_of_three(x, y, z):
+    avg = (x + y + z) / 3
+    return avg
+
+result = average_of_three(10, 20, 30)
+print("The average is:", result)
+```
+
+**Output:**
+
+```
+The average is: 20.0
+```
+
+**Explanation:**
+- The function calculates the average: (10 + 20 + 30) / 3 = 20.0
+- The result is stored in the variable `result` and then printed
+
+---
+
+## Types of Functions
+
+### 1. Built-in Functions
+
+These are functions that are pre-defined in Python and can be used directly without any need for definition.
+
+**Examples:**
+
+```python
+print("Hello, World!")  # print() is a built-in function
+length = len("Python")  # len() is a built-in function
+print(length)
+
+numbers = range(5)      # range() is a built-in function
+print(list(numbers))
+
+data_type = type(42)    # type() is a built-in function
+print(data_type)
+```
+
+**Output:**
+
+```
+Hello, World!
+6
+[0, 1, 2, 3, 4]
+<class 'int'>
+```
+
+**Common Built-in Functions:**
+- `print()` - displays output
+- `len()` - returns length
+- `type()` - returns data type
+- `range()` - generates sequence of numbers
+- `input()` - takes user input
+- `int()`, `float()`, `str()` - type conversion
+
+---
+
+### 2. User-Defined Functions
+
+These are functions that are defined by us (the user) to perform specific tasks.
+
+**Example:**
+
+```python
+def greet_user(name):
+    print("Hello,", name)
+
+greet_user("Sushant")
+```
+
+**Output:**
+
+```
+Hello, Sushant
+```
+
+---
+
+## Default Parameters
+
+We can assign default values to parameters in the function definition. If no argument is passed, the default value is used.
+
+**Example:**
+
+```python
+def cal_prod(b, a=5):  # a has default value 5
+    print(a * b)
+    return a * b
+
+cal_prod(3)      # uses default value of a (5)
+cal_prod(3, 10)  # overrides default value of a with 10
+```
+
+**Output:**
+
+```
+15
+30
+```
+
+**Explanation:**
+- First call: `cal_prod(3)` → uses a=5 (default), so 5 * 3 = 15
+- Second call: `cal_prod(3, 10)` → uses a=10, so 10 * 3 = 30
+
+---
+
+## Practice Questions for Functions
+
+### Question 1: Write a function to print the length of a list
+
+```python
+cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"]
+
+def print_list_length(list):
+    print(len(list))
+
+print_list_length(cities)
+```
+
+**Output:**
+
+```
+5
+```
+
+---
+
+### Question 2: WAF to print the elements of the list in a single line
+
+```python
+heros = ["Ironman", "Thor", "Hulk", "Captain America", "Black Widow"]
+
+def print_list_elements(list):
+    for item in list:
+        print(item, end=" ")  # "end" parameter prints in single line with space
+
+print_list_elements(heros)
+```
+
+**Output:**
+
+```
+Ironman Thor Hulk Captain America Black Widow
+```
+
+**Explanation:**
+- `end=" "` parameter changes the default line break to a space
+- By default, `print()` ends with a newline (\n)
+- Here we changed it to space so all items print on one line
+
+---
+
+### Question 3: Find the factorial of a number using functions
+
+```python
+n = 7
+
+def calc_factorial(i):
+    fact = 1
+    for j in range(1, i+1):
+        fact = fact * j
+    print("The factorial of", i, "is", fact)
+
+calc_factorial(n)
+```
+
+**Output:**
+
+```
+The factorial of 7 is 5040
+```
+
+**Explanation:** 7! = 7 × 6 × 5 × 4 × 3 × 2 × 1 = 5040
+
+---
+
+### Question 4: WAF to convert USD to INR
+
+```python
+def converter(usd_val):
+    inr_val = (usd_val * 82.74)
+    print(usd_val, "USD =", inr_val, "INR")
+
+converter(2)
+converter(10)
+converter(100)
+```
+
+**Output:**
+
+```
+2 USD = 165.48 INR
+10 USD = 827.4 INR
+100 USD = 8274.0 INR
+```
+
+---
+
+## Recursion in Functions
+
+Recursion is when a function calls itself to solve a problem.
+
+**Key Points about Recursion:**
+- A recursive function must have a base case (stopping condition)
+- Without a base case, the function will call itself infinitely (infinite recursion)
+- Each recursive call should move closer to the base case
+
+---
+
+### Example 1: Print Numbers in Descending Order
+
+```python
+def show(n):
+    if n == -2:  # Base case
+        return
+    print(n)
+    show(n-1)    # Recursive call - function calling itself
+
+show(5)
+```
+
+**Output:**
+
+```
+5
+4
+3
+2
+1
+0
+-1
+```
+
+**How it works:**
+- `show(5)` prints 5, then calls `show(4)`
+- `show(4)` prints 4, then calls `show(3)`
+- `show(3)` prints 3, then calls `show(2)`
+- `show(2)` prints 2, then calls `show(1)`
+- `show(1)` prints 1, then calls `show(0)`
+- `show(0)` prints 0, then calls `show(-1)`
+- `show(-1)` prints -1, then calls `show(-2)`
+- `show(-2)` hits the base case and returns (stops)
+
+---
+
+### Example 2: Factorial Using Recursion
+
+**Recurrence Relation:** It is an equation that recursively defines a sequence where the next term is a function of the previous terms.
+
+For factorial: **n! = n × (n-1)!**
+
+```python
+def fact(n):
+    if (n == 1 or n == 0):  # Base case
+        return 1
+    return fact(n-1) * n    # Recursive call
+
+print(fact(5))
+print(fact(7))
+print(fact(0))
+```
+
+**Output:**
+
+```
+120
+5040
+1
+```
+
+**Explanation for fact(5):**
+- `fact(5)` = 5 × `fact(4)`
+- `fact(4)` = 4 × `fact(3)`
+- `fact(3)` = 3 × `fact(2)`
+- `fact(2)` = 2 × `fact(1)`
+- `fact(1)` = 1 (base case)
+- Working backwards: 2 × 1 = 2 → 3 × 2 = 6 → 4 × 6 = 24 → 5 × 24 = 120
+
+
+
+
+
+Recursion in Functions
+Recursion is when a function calls itself to solve a problem.
+Key Points about Recursion:
+A recursive function must have a base case (stopping condition)
+Without a base case, the function will call itself infinitely (infinite recursion)
+Each recursive call should move closer to the base case
+
+Example 1: Print Numbers in Descending Order
+def show(n):
+    if n == -2:  # Base case
+        return
+    print(n)
+    show(n-1)    # Recursive call - function calling itself
+
+show(5)
+```
+
+**Output:**
+```
+5
+4
+3
+2
+1
+0
+-1
+How it works:
+show(5) prints 5, then calls show(4)
+show(4) prints 4, then calls show(3)
+show(3) prints 3, then calls show(2)
+show(2) prints 2, then calls show(1)
+show(1) prints 1, then calls show(0)
+show(0) prints 0, then calls show(-1)
+show(-1) prints -1, then calls show(-2)
+show(-2) hits the base case and returns (stops)
+
+Example 2: Factorial Using Recursion
+Recurrence Relation: It is an equation that recursively defines a sequence where the next term is a function of the previous terms.
+For factorial: n! = n × (n-1)!
+def fact(n):
+    if (n == 1 or n == 0):  # Base case
+        return 1
+    return fact(n-1) * n    # Recursive call
+
+print(fact(5))
+print(fact(7))
+print(fact(0))
+```
+
+**Output:**
+```
+120
+5040
+1
+```
+
+**Explanation for fact(5):**
+- `fact(5)` = 5 × `fact(4)`
+- `fact(4)` = 4 × `fact(3)`
+- `fact(3)` = 3 × `fact(2)`
+- `fact(2)` = 2 × `fact(1)`
+- `fact(1)` = 1 (base case)
+- Working backwards: 2 × 1 = 2 → 3 × 2 = 6 → 4 × 6 = 24 → 5 × 24 = 120
+
+---
+
+## Call Stack
+
+The **call stack** is a data structure that stores information about the active functions of a program.
+
+### How Call Stack Works:
+
+1. When a function is called, a new **frame** is created and **pushed** onto the call stack
+2. The frame contains:
+   - Function parameters
+   - Local variables
+   - Return address (where to go back after function completes)
+3. When a function completes, its frame is **popped** from the stack
+4. Control returns to the previous function
+
+### Visual Example with fact(3):
+```
+Call Stack Visualization:
+
+Step 1: fact(3) is called
+┌──────────────┐
+│   fact(3)    │
+└──────────────┘
+
+Step 2: fact(3) calls fact(2)
+┌──────────────┐
+│   fact(2)    │
+├──────────────┤
+│   fact(3)    │
+└──────────────┘
+
+Step 3: fact(2) calls fact(1)
+┌──────────────┐
+│   fact(1)    │
+├──────────────┤
+│   fact(2)    │
+├──────────────┤
+│   fact(3)    │
+└──────────────┘
+
+Step 4: fact(1) returns 1, popped from stack
+┌──────────────┐
+│   fact(2)    │  ← receives 1, calculates 2*1=2
+├──────────────┤
+│   fact(3)    │
+└──────────────┘
+
+Step 5: fact(2) returns 2, popped from stack
+┌──────────────┐
+│   fact(3)    │  ← receives 2, calculates 3*2=6
+└──────────────┘
+
+Step 6: fact(3) returns 6, final result
+```
+
+**Simple Understanding:** Think of the call stack like a stack of plates:
+- When you call a function, you add a plate on top (push)
+- When a function finishes, you remove the top plate (pop)
+- You always work with the top plate first (Last In, First Out - LIFO)
+
+---
+
+## Practice Questions on Recursion
+
+### Question 5: Write a recursive function to calculate the sum of n natural numbers
+
+**Problem:** Find sum of first n natural numbers (1 + 2 + 3 + ... + n)
+
+**Recurrence Relation:** `sum(n) = n + sum(n-1)`
+
+```python
+def cal_sum(n):
+    if (n == 0):  # Base case
+        return 0
+    return cal_sum(n-1) + n  # Recursive call
+
+sum = cal_sum(5)
+print(sum)
+
+sum2 = cal_sum(10)
+print(sum2)
+```
+
+**Output:**
+
+```
+15
+55
+```
+
+**Explanation for cal_sum(5):**
+- `cal_sum(5)` = 5 + `cal_sum(4)`
+- `cal_sum(4)` = 4 + `cal_sum(3)`
+- `cal_sum(3)` = 3 + `cal_sum(2)`
+- `cal_sum(2)` = 2 + `cal_sum(1)`
+- `cal_sum(1)` = 1 + `cal_sum(0)`
+- `cal_sum(0)` = 0 (base case)
+- Working backwards: 1 + 0 = 1 → 2 + 1 = 3 → 3 + 3 = 6 → 4 + 6 = 10 → 5 + 10 = 15
+
+**For cal_sum(10):**
+Sum = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
+
+---
+
+## Comparison: Iteration vs Recursion
+
+### Factorial Using Loop (Iteration)
+
+```python
+def fact_iterative(n):
+    fact = 1
+    for i in range(1, n+1):
+        fact = fact * i
+    return fact
+
+print(fact_iterative(5))
+```
+
+**Output:**
+
+```
+120
+```
+
+---
+
+### Factorial Using Recursion
+
+```python
+def fact_recursive(n):
+    if (n == 1 or n == 0):
+        return 1
+    return fact_recursive(n-1) * n
+
+print(fact_recursive(5))
+```
+
+**Output:**
+```
+120
+---
+
+### When to Use Iteration vs Recursion
+
+**Use Iteration when:**
+- The problem is simple and straightforward
+- You need better performance (faster, uses less memory)
+- You want to avoid stack overflow errors
+
+**Use Recursion when:**
+- The problem naturally fits a recursive structure (tree traversal, divide and conquer)
+- The code is more readable and elegant with recursion
+- You're working with recursive data structures
+
+---
+
+# Lists and Tuples in Python
+
+## What is a List?
+
+A list is a built-in data type that stores a set of values.
+
+### Key Features of Lists:
+
+- Can store elements of different data types (int, float, string, boolean, etc.)
+- **Lists are mutable** (can be changed/modified)
+- Created using square brackets `[ ]`
+- Elements are ordered and can be accessed by index
+
+---
+
+## Why Use Lists?
+
+Without lists, we would need to store each value in a separate variable:
+
+```python
+marks1 = 94.2
+marks2 = 88.5
+marks3 = 76.5
+marks4 = 82.0
+marks5 = 91.3
+marks6 = 79.5
+```
+
+This is inefficient and difficult to manage!
+
+With lists, we can store all values in one variable:
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5]
+print(marks)
+```
+
+**Output:**
+
+```
+[94.2, 88.5, 76.5, 82.0, 91.3, 79.5]
+```
+
+---
+
+## Accessing List Elements
+
+List elements can be accessed using their index (position). Index starts from 0.
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5]
+print(marks[0])  # First element
+print(marks[2])  # Third element
+print(marks[5])  # Last element
+```
+
+**Output:**
+
+```
+94.2
+76.5
+79.5
+```
+
+---
+
+## Lists Can Store Different Data Types
+
+```python
+students = ["Rahul", 95, 23, "Delhi"]
+print(students)
+```
+
+**Output:**
+
+```
+['Rahul', 95, 23, 'Delhi']
+```
+
+**Explanation:** This list contains strings, integers - all different data types in one list.
+
+---
+
+## Lists are Mutable (Can Be Changed)
+
+```python
+students = ["Rahul", 95, 23, "Delhi"]
+students[0] = "Arjun"  # Changing first element
+print(students)
+```
+
+**Output:**
+
+```
+['Arjun', 95, 23, 'Delhi']
+```
+
+**Explanation:** We successfully changed "Rahul" to "Arjun". This is possible because lists are mutable.
+
+---
+
+## Strings vs Lists: Immutable vs Mutable
+
+### Strings are Immutable (Cannot Be Changed)
+
+```python
+str = "Hello" 
+print(str[0])
+str[0] = "y"  # This will give an error
+```
+
+**Output:**
+
+```
+H
+TypeError: 'str' object does not support item assignment
+```
+
+**Explanation:** Strings cannot be modified after creation. This is called immutability.
+
+---
+
+### Lists are Mutable (Can Be Changed)
+
+```python
+list = ["Hello", "World"]
+print(list[0])
+list[0] = "Hi"  # This works fine
+print(list)
+```
+
+**Output:**
+
+```
+Hello
+['Hi', 'World']
+```
+
+
+
+---
+
+## List Slicing
+
+List slicing allows us to access a portion of the list.
+
+**Syntax:** `list[start:end]`
+- **start** index is inclusive (included)
+- **end** index is exclusive (not included)
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+```
+
+---
+
+### Example 1: Slice from index 1 to 5
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+print(marks[1:5])
+```
+
+**Output:**
+
+```
+[88.5, 76.5, 82.0, 91.3]
+```
+
+**Explanation:** Elements from index 1 to 4 (5-1) are included.
+
+---
+
+### Example 2: Slice from index 1 to end
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+print(marks[1:])
+```
+
+**Output:**
+
+```
+[88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+```
+
+**Explanation:** `marks[1:]` is same as `marks[1:len(marks)]` - from index 1 to the end.
+
+---
+
+### Example 3: Slice from start to index 4
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+print(marks[:4])
+```
+
+**Output:**
+
+```
+[94.2, 88.5, 76.5, 82.0]
+```
+
+**Explanation:** Elements from index 0 to 3 (4-1) are included.
+
+---
+
+### Example 4: Negative Indexing
+
+```python
+marks = [94.2, 88.5, 76.5, 82.0, 91.3, 79.5, 85.0, 90.5]
+print(marks[-3:-1])
+```
+
+**Output:**
+
+```
+[79.5, 85.0]
+```
+
+**Explanation:**
+- Index -3 is 79.5
+- Index -1 is 90.5
+- But end index is exclusive, so we get elements from -3 to -2
+
+---
+
+## List Methods
+
+List methods are built-in functions to perform operations on lists.
+
+### 1. append() - Add Element at End
+
+```python
+list = [10, 20, 30, 40, 50]
+list.append(100)
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 30, 40, 50, 100]
+```
+
+**Explanation:** `append()` adds the element 100 at the end of the list.
+
+---
+
+### 2. sort() - Sort in Ascending Order
+
+```python
+list = [50, 10, 40, 20, 30]
+list.sort()
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 30, 40, 50]
+```
+
+**Explanation:** `sort()` arranges elements from smallest to largest.
+
+---
+
+### 3. sort(reverse=True) - Sort in Descending Order
+
+```python
+list = [10, 20, 30, 40, 50]
+list.sort(reverse=True)
+print(list)
+```
+
+**Output:**
+
+```
+[50, 40, 30, 20, 10]
+```
+
+**Explanation:** Sorts from largest to smallest.
+
+---
+
+### 4. reverse() - Reverse the List
+
+```python
+list = [10, 20, 30, 40, 50]
+list.reverse()
+print(list)
+```
+
+**Output:**
+
+```
+[50, 40, 30, 20, 10]
+```
+
+**Important:** `reverse()` just reverses the current order. It is NOT the same as sorting in descending order.
+
+**Example to show the difference:**
+
+```python
+list1 = [50, 10, 30, 20, 40]
+list1.reverse()
+print("Reversed:", list1)
+
+list2 = [50, 10, 30, 20, 40]
+list2.sort(reverse=True)
+print("Sorted Descending:", list2)
+```
+
+**Output:**
+
+```
+Reversed: [40, 20, 30, 10, 50]
+Sorted Descending: [50, 40, 30, 20, 10]
+```
+
+---
+
+### 5. insert() - Insert Element at Specific Index
+
+```python
+list = [10, 20, 30, 40, 50]
+list.insert(2, 73)
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 73, 30, 40, 50]
+```
+
+**Explanation:** `insert(2, 73)` inserts 73 at index 2. The existing elements shift to the right.
+
+---
+
+### 6. remove() - Remove Specific Element
+
+```python
+list = [10, 20, 30, 40, 50]
+list.remove(30)
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 40, 50]
+```
+
+**Explanation:** `remove(30)` removes the first occurrence of 30 from the list.
+
+---
+
+### 7. pop() - Remove Element at Specific Index
+
+```python
+list = [10, 20, 73, 30, 40, 50]
+list.pop(2)
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 30, 40, 50]
+```
+
+**Explanation:** `pop(2)` removes the element at index 2 (which is 73).
+
+If no index is given, `pop()` removes the last element:
+
+```python
+list = [10, 20, 30, 40, 50]
+list.pop()
+print(list)
+```
+
+**Output:**
+
+```
+[10, 20, 30, 40]
+```
+
+
+
+
+---
+
+# Tuples in Python
+
+A tuple is a built-in data type that stores a set of values.
+
+## Key Features of Tuples:
+
+- Similar to lists
+- **Tuples are immutable** (cannot be changed/modified)
+- Created using parentheses `( )`
+- Elements are ordered and can be accessed by index
+
+---
+
+## Creating Tuples
+
+```python
+tuple1 = (10, 20, 30, 40, 50)
+print(tuple1)
+print(tuple1[2])  # Accessing element at index 2
+```
+
+**Output:**
+
+```
+(10, 20, 30, 40, 50)
+30
+```
+---
+
+## Single Value Tuple - Important Note!
+
+If we write only a single value in a tuple, we need to add a comma after that value. Otherwise, it will be considered as a normal variable, not a tuple.
+
+### Correct Way - Single Value Tuple:
+
+```python
+tuple2 = (100,)  # Note the comma
+print(type(tuple2))
+```
+
+**Output:**
+
+```
+<class 'tuple'>
+```
+
+---
+
+### Wrong Way - Without Comma:
+
+```python
+tuple3 = (100)  # No comma - treated as integer
+print(type(tuple3))
+```
+
+**Output:**
+
+```
+<class 'int'>
+```
+
+**Explanation:** Without the comma, Python treats (100) as just an integer with parentheses, not a tuple.
+
+---
+
+## Tuples are Immutable
+
+```python
+tuple1 = (10, 20, 30, 40, 50)
+tuple1[2] = 100  # This will give an error
+```
+
+**Output:**
+
+```
+TypeError: 'tuple' object does not support item assignment
+```
+
+**Explanation:** Unlike lists, tuples cannot be modified after creation.
+
+---
+
+## Tuple Methods
+
+### 1. index() - Find Index of Element
+
+```python
+tuple1 = (10, 20, 30, 40, 50, 20, 30)
+print(tuple1.index(30))
+print(tuple1.index(20))
+```
+
+**Output:**
+
+```
+2
+1
+```
+
+**Explanation:**
+- `index(30)` returns 2 (the first occurrence of 30 is at index 2)
+- `index(20)` returns 1 (the first occurrence of 20 is at index 1)
+
+### 2. count() - Count Occurrences of Element
+
+```python
+tuple1 = (10, 20, 30, 40, 50, 20, 30)
+print(tuple1.count(20))
+print(tuple1.count(30))
+print(tuple1.count(10))
+```
+
+**Output:**
+
+```
+2
+2
+1
+```
+
+**Explanation:**
+- 20 appears 2 times in the tuple
+- 30 appears 2 times in the tuple
+- 10 appears 1 time in the tuple
+
+---
+
+## Practice Questions
+
+### Question 1: WAP to ask the user to enter names of their 3 favourite movies and store them in a list
+
+```python
+enter_movies = input("Enter your 1st favourite movie: ")
+enter_movies2 = input("Enter your 2nd favourite movie: ")
+enter_movies3 = input("Enter your 3rd favourite movie: ")
+
+totalmovies = [enter_movies, enter_movies2, enter_movies3]
+print("Your favourite movies are:", totalmovies)
+print(type(totalmovies))
+```
+
+**If user enters:**
+- 1st movie: Inception
+- 2nd movie: Interstellar
+- 3rd movie: The Dark Knight
+
+**Output:**
+
+```
+Your favourite movies are: ['Inception', 'Interstellar', 'The Dark Knight']
+<class 'list'>
+```
+
+---
+
+### Question 2: WAP to check if a list contains a palindrome of elements
+
+A palindrome list reads the same forwards and backwards (like [1, 2, 1]).
+
+```python
+list1 = [1, 2, 1]  # Palindrome
+copy_list1 = list1.copy()
+copy_list1.reverse()
+
+if list1 == copy_list1:
+    print("Palindrome")
+else:
+    print("Not a Palindrome")
+```
+
+**Output:**
+
+```
+Palindrome
+```
+
+**Testing with non-palindrome:**
+
+```python
+list1 = [1, 2, 3]  # Not palindrome
+copy_list1 = list1.copy()
+copy_list1.reverse()
+
+if list1 == copy_list1:
+    print("Palindrome")
+else:
+    print("Not a Palindrome")
+```
+
+**Output:**
+
+```
+Not a Palindrome
+```
+
+**Explanation:**
+- We create a copy of the list
+- Reverse the copy
+- If original and reversed are the same, it's a palindrome
+- [1, 2, 1] reversed is [1, 2, 1] → Palindrome ✓
+- [1, 2, 3] reversed is [3, 2, 1] → Not a Palindrome ✗
+
+---
+
+### Question 3: WAP to count the number of students with grade 'A' from the given tuple
+
+```python
+tuple = ('c', 'd', 'a', 'c', 'b', 'a', 'a', 'a', 'b')
+print(tuple.count('a'))
+```
+
+**Output:**
+
+```
+4
+```
+
+**Explanation:** The grade 'a' appears 4 times in the tuple.
+
+---
+
+### Question 4: Store the above values in a list and sort them from A to D
+
+```python
+list = ['c', 'd', 'a', 'c', 'b', 'a', 'a', 'a', 'b']
+list.sort()
+print(list)
+```
+
+**Output:**
+
+```
+['a', 'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd']
+```
+
+**Explanation:** The `sort()` method arranges the grades in alphabetical order from A to D.
+
+---
+
+## Comparison: Lists vs Tuples
+
+| Feature | Lists | Tuples |
+|---------|-------|--------|
+| Syntax | Square brackets `[]` | Parentheses `()` |
+| Mutability | Mutable (can be changed) | Immutable (cannot be changed) |
+| Methods | Many methods (append, remove, sort, etc.) | Few methods (index, count) |
+| Speed | Slower | Faster |
+| Use Case | When data needs to change | When data should remain constant |
+| Example | `[1, 2, 3]` | `(1, 2, 3)` |
+
+---
+
+## When to Use Lists vs Tuples?
+
+**Use Lists when:**
+- You need to add, remove, or modify elements
+- Data changes over time
+- **Example:** Shopping cart items, student grades
+
+**Use Tuples when:**
+- Data should not change
+- You want to protect data from accidental modification
+- **Example:** Coordinates (x, y), RGB colors (255, 0, 0), dates
+
+---
+
+# Dictionary and Sets in Python
+
+## What is a Dictionary?
+
+A dictionary is used to store data in key-value pairs.
+
+### Key Features of Dictionaries:
+
+- **Unordered** - No index positions like lists or tuples
+- **Changeable (Mutable)** - Values can be modified
+- **No Duplicates** - Keys must be unique
+- Created using curly braces `{ }` with key-value pairs
+
+---
+
+## Creating a Dictionary
+
+```python
+info = {
+    "name": "John",
+    "age": 30
+}
+
+print(info)
+```
+
+**Output:**
+
+```
+{'name': 'John', 'age': 30}
+```
+
+**Explanation:**
+- "name" and "age" are keys
+- "John" and 30 are values
+- Keys can be strings, numbers, or tuples
+- Values can be any data type
+
+---
+
+## Why Dictionaries are Unordered?
+
+**Strings, lists, and tuples have index positions:**
+- `list[0]`, `list[1]`, `list[2]` etc.
+
+**Dictionaries don't have index positions:**
+- You cannot access dictionary elements using index numbers
+- You access them using keys instead
+
+---
+
+## Accessing Dictionary Values
+
+To access a value, use the key inside square brackets.
+
+```python
+info = {
+    "name": "John",
+    "age": 30
+}
+
+print(info["name"])
+print(info["age"])
+```
+
+**Output:**
+
+```
+John
+30
+```
+
+**Explanation:** We use the key to get its corresponding value.
+
+---
+
+## Updating Dictionary Values
+
+```python
+info = {
+    "name": "John",
+    "age": 30
+}
+
+info["age"] = 31  # Updating existing value
+print(info)
+```
+
+**Output:**
+
+```
+{'name': 'John', 'age': 31}
+```
+
+**Explanation:** The age is updated from 30 to 31.
+
+---
+
+## Adding New Key-Value Pairs
+
+```python
+info = {
+    "name": "John",
+    "age": 30
+}
+
+info["city"] = "New York"  # Adding new key-value pair
+print(info)
+```
+
+**Output:**
+
+```
+{'name': 'John', 'age': 30, 'city': 'New York'}
+```
+
+**Explanation:** A new key "city" with value "New York" is added to the dictionary.
+
+---
+
+## Nested Dictionaries
+
+A dictionary can contain another dictionary as a value. This is called a nested dictionary.
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+print(student)
+```
+
+**Output:**
+
+```
+{'name': 'Alice', 'age': 22, 'courses': {'math': 90, 'science': 85}}
+```
+
+---
+
+## Accessing Nested Dictionary Values
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+print(student["courses"]["math"])
+print(student["courses"]["science"])
+```
+
+**Output:**
+
+```
+90
+85
+```
+
+**Explanation:**
+- `student["courses"]` accesses the nested dictionary
+- `["math"]` then accesses the math score from that nested dictionary
+
+---
+
+## Dictionary Methods
+
+### 1. keys() - Get All Keys
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+print(student.keys())
+```
+
+**Output:**
+
+```
+dict_keys(['name', 'age', 'courses'])
+```
+
+**Explanation:** Returns all the keys in the dictionary.
+
+---
+
+### 2. values() - Get All Values
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+print(student.values())
+```
+
+**Output:**
+
+```
+dict_values(['Alice', 22, {'math': 90, 'science': 85}])
+```
+
+**Explanation:** Returns all the values in the dictionary.
+
+---
+
+### 3. items() - Get All Key-Value Pairs
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+print(student.items())
+```
+
+**Output:**
+
+```
+dict_items([('name', 'Alice'), ('age', 22), ('courses', {'math': 90, 'science': 85})])
+```
+
+**Explanation:** Returns all key-value pairs as tuples.
+
+---
+
+### 4. get() - Get Value for Specified Key
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22
+}
+
+print(student.get("name"))
+print(student.get("age"))
+```
+
+**Output:**
+
+```
+Alice
+22
+```
+
+---
+
+**Difference between get() and [ ]:**
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22
+}
+
+print(student.get("city"))      # Returns None if key doesn't exist
+print(student["city"])           # Throws KeyError if key doesn't exist
+```
+
+**Output:**
+
+```
+None
+KeyError: 'city'
+```
+
+**Explanation:** `get()` is safer because it returns None instead of causing an error.
+
+---
+
+### 5. update() - Add or Update Key-Value Pairs
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22,
+    "courses": {
+        "math": 90,
+        "science": 85
+    }
+}
+
+student.update({"College": "KJ"})
+print(student)
+```
+
+**Output:**
+
+```
+{'name': 'Alice', 'age': 22, 'courses': {'math': 90, 'science': 85}, 'College': 'KJ'}
+```
+
+**Explanation:** `update()` adds the new key-value pair "College": "KJ" to the dictionary.
+
+**Updating existing value:**
+
+```python
+student = {
+    "name": "Alice",
+    "age": 22
+}
+
+student.update({"age": 23})
+print(student)
+```
+
+**Output:**
+
+```
+{'name': 'Alice', 'age': 23}
+```
+
+---
+
+# Sets in Python
+
+A set is a collection of unordered items. Every element in a set is:
+- **Unique** (no duplicates allowed)
+- **Immutable** (set elements themselves cannot be changed)
+
+## Key Features of Sets:
+
+- Created using curly braces `{ }`
+- Unordered (no index positions)
+- No duplicate values
+- Useful for removing duplicates and mathematical operations
+---
+
+## Creating a Set
+
+```python
+nums = {1, 2, 3, 4, 5}
+print(nums)
+```
+
+**Output:**
+
+```
+{1, 2, 3, 4, 5}
+```
+
+---
+
+## Sets Automatically Remove Duplicates
+
+```python
+num = {1, 2, 2, 3, 4, 4, 5}
+print(num)
+```
+
+**Output:**
+
+```
+{1, 2, 3, 4, 5}
+```
+
+**Explanation:** Duplicate values (2, 2 and 4, 4) are automatically removed. Each element appears only once.
+
+---
+
+## Creating an Empty Set
+
+**Important Note:** You cannot use `{}` to create an empty set!
+
+```python
+collection = {}
+print(type(collection))
+```
+
+**Output:**
+
+```
+<class 'dict'>
+```
+
+**Explanation:** `{}` creates an empty dictionary, not a set!
+
+**Correct way to create an empty set:**
+
+```python
+collection = set()
+print(type(collection))
+```
+
+**Output:**
+
+```
+<class 'set'>
+```
+
+---
+
+## Set Methods
+
+**Sets are Mutable:**
+- We can add or remove elements from a set
+- But set elements themselves are immutable (cannot be lists or dictionaries)
+
+### 1. add() - Add Element to Set
+
+```python
+num = {1, 2, 3, 4, 5}
+num.add(6)
+print(num)
+```
+
+**Output:**
+
+```
+{1, 2, 3, 4, 5, 6}
+```
+
+**Explanation:** Element 6 is added to the set.
+
+---
+
+### 2. remove() - Remove Specific Element
+
+```python
+num = {1, 2, 3, 4, 5}
+num.remove(3)
+print(num)
+```
+
+**Output:**
+
+```
+{1, 2, 4, 5}
+```
+
+**Explanation:** Element 3 is removed from the set.
+
+**Note:** If you try to remove an element that doesn't exist, it will throw an error:
+
+```python
+num = {1, 2, 3, 4, 5}
+num.remove(10)  # This will give KeyError
+```
+
+---
+
+### 3. clear() - Remove All Elements
+
+```python
+num = {1, 2, 3, 4, 5}
+num.clear()
+print(num)
+```
+
+**Output:**
+
+```
+set()
+```
+
+**Explanation:** All elements are removed, leaving an empty set.
+
+---
+
+### 4. pop() - Remove a Random Element
+
+```python
+num = {1, 2, 3, 4, 5}
+removed_element = num.pop()
+print("Removed element:", removed_element)
+print("Remaining set:", num)
+```
+
+**Output (may vary):**
+
+```
+Removed element: 1
+Remaining set: {2, 3, 4, 5}
+```
+
+**Explanation:** `pop()` removes and returns a random element. Since sets are unordered, you don't know which element will be removed.
+
+---
+
+### 5. len() - Get Number of Elements
+
+```python
+num = {1, 2, 3, 4, 5}
+print(len(num))
+```
+
+**Output:**
+
+```
+5
+```
+---
+
+## Set Operations
+
+### Union - Combine Two Sets
+
+Union combines all elements from both sets (removing duplicates).
+
+```python
+set1 = {1, 2, 3, 4, 5}
+set2 = {4, 2, 9, 7, 8}
+
+print(set1.union(set2))
+```
+
+**Output:**
+
+```
+{1, 2, 3, 4, 5, 7, 8, 9}
+```
+
+**Explanation:** All unique elements from both sets are combined. Duplicates (2 and 4) appear only once.
+
+**Visual representation:**
+
+```
+set1: {1, 2, 3, 4, 5}
+set2: {4, 2, 9, 7, 8}
+Union: {1, 2, 3, 4, 5, 7, 8, 9}
+```
+
+---
+
+### Intersection - Common Elements
+
+Intersection returns only the elements that are present in both sets.
+
+```python
+set1 = {1, 2, 3, 4, 5}
+set2 = {4, 2, 9, 7, 8}
+
+print(set1.intersection(set2))
+```
+
+**Output:**
+
+```
+{2, 4}
+```
+
+**Explanation:** Only 2 and 4 are present in both sets.
+
+**Visual representation:**
+
+```
+set1: {1, 2, 3, 4, 5}
+set2: {4, 2, 9, 7, 8}
+Intersection: {2, 4}
+```
+
+---
+
+## Practice Questions
+
+### Question 1: Store word meanings in Python dictionary
+
+```python
+info = {
+    "table": ["A piece of furniture", "list of facts and figures"],
+    "cat": "a small animal"
+}
+
+print(info)
+print(type(info))
+```
+
+**Output:**
+
+```
+{'table': ['A piece of furniture', 'list of facts and figures'], 'cat': 'a small animal'}
+<class 'dict'>
+```
+
+**Explanation:**
+- The key "table" has multiple meanings stored in a list
+- The key "cat" has a single meaning as a string
+
+**Accessing the meanings:**
+
+```python
+print(info["table"])
+print(info["table"][0])  # First meaning
+print(info["cat"])
+```
+
+**Output:**
+
+```
+['A piece of furniture', 'list of facts and figures']
+A piece of furniture
+a small animal
+```
+
+---
+
+### Question 2: How many classrooms are needed by all students?
+
+**Problem:** You are given a list of subjects for students. Assume one classroom is required for 1 subject. How many classrooms are needed by all students?
+
+```python
+subjects = ["Math", "Science", "English", "History", "Geography", "Math", "Science"]
+
+count = len(set(subjects))
+print("Number of classrooms needed:", count)
+```
+
+**Output:**
+
+```
+Number of classrooms needed: 5
+```
+
+**Explanation:**
+- Original list has 7 subjects with duplicates
+- Converting to set removes duplicates: {"Math", "Science", "English", "History", "Geography"}
+- Only 5 unique subjects exist
+- Therefore, only 5 classrooms are needed
+
+**Step-by-step breakdown:**
+
+```python
+subjects = ["Math", "Science", "English", "History", "Geography", "Math", "Science"]
+
+print("Original list:", subjects)
+print("Length of list:", len(subjects))
+
+unique_subjects = set(subjects)
+print("Unique subjects:", unique_subjects)
+print("Number of unique subjects:", len(unique_subjects))
+```
+
+**Output:**
+
+```
+Original list: ['Math', 'Science', 'English', 'History', 'Geography', 'Math', 'Science']
+Length of list: 7
+Unique subjects: {'Geography', 'History', 'English', 'Math', 'Science'}
+Number of unique subjects: 5
+---
+
+## Comparison: Dictionary vs Set
+
+| Feature | Dictionary | Set |
+|---------|-----------|-----|
+| Syntax | `{"key": "value"}` | `{1, 2, 3}` |
+| Structure | Key-value pairs | Only values |
+| Duplicates | Keys must be unique | No duplicates allowed |
+| Ordering | Unordered | Unordered |
+| Accessing | Using keys | Cannot access individual elements |
+| Use Case | Store related data | Remove duplicates, mathematical operations |
+
+---
+
+## When to Use Dictionary vs Set?
+
+**Use Dictionary when:**
+- You need to store related information (key-value pairs)
+- You need to quickly look up values using keys
+- **Example:** Student records, word meanings, configuration settings
+
+**Use Set when:**
+- You need to remove duplicates from a list
+- You need to perform mathematical operations (union, intersection)
+- You want to check if an element exists (very fast)
+- **Example:** Unique tags, unique visitors, finding common elements
+
+---
+
+# Modules and File Handling in Python
+
+## What are Modules?
+
+A module is a file containing Python definitions and statements.
+
+### Key Points about Modules:
+
+- Modules use the `.py` extension
+- They promote code reusability
+- Can be imported and used in other Python programs
+- Help organize code into logical units
+
+---
+
+## Creating and Using Modules
+
+### How to Create a Module:
+
+When you save any code using the `.py` extension, it becomes a module that can be used in other Python programs.
+
+**Example: Creating a calculator module**
+
+Save this code as `calculator.py`:
+
+```python
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b != 0:
+        return a / b
+    else:
+        return "Cannot divide by zero"
+```
+
+---
+
+### How to Import and Use a Module:
+
+In your main program file:
+
+```python
+import calculator
+
+result1 = calculator.add(10, 5)
+result2 = calculator.multiply(4, 3)
+
+print("Addition:", result1)
+print("Multiplication:", result2)
+```
+
+**Output:**
+
+```
+Addition: 15
+Multiplication: 12
+```
+
+**Explanation:** The calculator module is imported, and we can use its functions using `calculator.function_name()`.
+
+---
+
+## File I/O in Python
+
+File I/O (Input/Output) allows Python to perform operations on files such as:
+- Create a file
+- Read data from a file
+---
+
+## Types of Files
+
+### 1. Text Files
+- Human-readable files
+- **Examples:** `.txt`, `.docx`, `.log`, `.csv`, `.py`
+
+### 2. Binary Files (Non-text files)
+- Not human-readable, contain binary data
+- **Examples:** `.bin`, `.dat`, `.mp4`, `.mov`, `.jpeg`, `.png`
+
+---
+
+## File Operations
+
+### Opening, Reading, and Closing Files
+
+**Basic syntax:**
+
+```python
+f = open("filename", "mode")
+data = f.read()
+f.close()
+```
+
+**File Modes:**
+- **r** - Read mode (default)
+- **w** - Write mode (overwrites existing content)
+- **a** - Append mode (adds to existing content)
+- **r+** - Read and write
+- **w+** - Write and read
+- **a+** - Append and read
+
+---
+
+## Reading from a File
+
+### Example 1: Reading Entire File
+
+First, create a file named `demo.txt` with this content:
+
+```
+Hello World!
+This is my first file.
+I am learning Python.
+Python is awesome!
+```
+
+**Code:**
+
+```python
+f = open("demo.txt", "r")  # Open file in read mode
+data = f.read()             # Read entire file
+print(data)
+print(type(data))
+f.close()                   # Close file
+```
+
+**Output:**
+
+```
+Hello World!
+This is my first file.
+I am learning Python.
+Python is awesome!
+<class 'str'>
+```
+
+**Explanation:**
+- `open("demo.txt", "r")` opens the file in read mode
+- `f.read()` reads the entire file content as a string
+- `f.close()` closes the file
+
+---
+
+### Example 2: Reading Line by Line
+
+```python
+f = open("demo.txt", "r")
+
+line1 = f.readline()   # Reads only one line
+print(line1)
+
+line2 = f.readline()   # Reads next line
+print(line2)
+
+print(type(line1))
+
+f.close()
+```
+
+**Output:**
+
+```
+Hello World!
+
+This is my first file.
+
+<class 'str'>
+```
+
+**Explanation:** `readline()` reads one line at a time. Each call moves to the next line.
+
+---
+
+## Writing to a File
+
+### Using Write Mode (w)
+
+**Important:** Write mode overwrites the existing content completely!
+
+```python
+f = open("demo.txt", "w")
+
+f.write("This is first line written using python file handling")
+
+f.close()
+```
+
+**After running this code, demo.txt will contain:**
+
+```
+This is first line written using python file handling
+```
+
+**Explanation:** The previous content is completely replaced with the new content.
+
+---
+
+## Appending to a File
+
+### Using Append Mode (a)
+
+Append mode adds new content to the existing content without deleting anything.
+
+```python
+f = open("demo.txt", "a")
+
+f.write("\nI am learning python file handling")
+
+f.close()
+```
+
+**Now demo.txt will contain:**
+
+```
+This is first line written using python file handling
+I am learning python file handling
+```
+
+**Explanation:** `\n` adds a new line, and the text is appended to the end.
+
+---
+
+## Understanding Different File Modes
+
+### Comparison of r+, w+, and a+
+
+| Mode | Description | Pointer Position | Truncate? |
+|------|-------------|------------------|-------------|
+| r+ | Read and Write | Beginning | No - keeps existing content |
+| w+ | Write and Read | Beginning | Yes - deletes all content |
+| a+ | Append and Read | End | No - keeps existing content |
+
+---
+
+### Examples:
+
+**r+ Mode:**
+
+```python
+f = open("demo.txt", "r+")
+f.write("NEW TEXT")  # Overwrites from the beginning
+f.close()
+```
+
+**If demo.txt had:** `Hello World!`  
+**After r+:** `NEW TEXTrld!`
+
+**Explanation:** It overwrites from the beginning but doesn't delete the rest.
+
+---
+
+**w+ Mode:**
+
+```python
+f = open("demo.txt", "w+")
+f.write("NEW TEXT")
+f.close()
+```
+
+**If demo.txt had:** `Hello World!`  
+**After w+:** `NEW TEXT`
+
+**Explanation:** Everything is deleted, then new text is written.
+
+---
+
+**a+ Mode:**
+
+```python
+f = open("demo.txt", "a+")
+f.write("\nNEW TEXT")
+f.close()
+```
+
+**If demo.txt had:** `Hello World!`  
+**After a+:**
+
+```
+Hello World!
+NEW TEXT
+```
+
+**Explanation:** New text is added at the end without deleting anything.
+
+---
+
+## Using "with" Statement
+
+The `with` statement is the recommended way to work with files because:
+- It automatically closes the file after the code block
+- No need to call `f.close()`
+- Safer and cleaner code
+
+### Reading with "with":
+
+```python
+with open("demo.txt", "r") as f:
+    data = f.read()
+    print(data)
+# File is automatically closed here
+```
+
+**Output:**
+
+```
+Hello World!
+This is my first file.
+I am learning Python.
+```
+
+---
+
+### Writing with "with":
+
+```python
+with open("demo.txt", "w") as f:
+    f.write("This is me sushant")
+# File is automatically closed here
+```
+
+**Explanation:** The file is automatically closed when the with block ends, even if an error occurs.
+
+---
+
+## Deleting a File
+
+To delete a file, we use the `os` module.
+
+```python
+import os
+os.remove("emptyfile.py")  # Deletes the file named emptyfile.py
+```
+
+**Output:** The file `emptyfile.py` will be deleted from the directory.
+
+**Note:** If the file doesn't exist, this will throw an error.
+
+### Safe way to delete:
+
+```python
+import os
+
+if os.path.exists("emptyfile.py"):
+    os.remove("emptyfile.py")
+    print("File deleted successfully")
+else:
+    print("File does not exist")
+```
+
+---
+
+## Installing External Modules
+
+To install external modules (like pandas, numpy, etc.), use pip:
+
+```bash
+pip install module_name
+```
+
+**Example:**
+
+```bash
+pip install pandas
+pip install numpy
+```
+
+**Note:** The `os` module is built-in, so you don't need to install it.
+
+---
+
+## Practice Questions
+
+### Question 1: Create a new file "practice.txt" and add data
+
+```python
+with open("practice.txt", "w") as f:
+    f.write("Hello World!\n")
+    f.write("This is my first file handling practice.\n")
+    f.write("I am learning python programming.\n")
+    f.write("File handling is very important in programming.\n")
+    f.write("Thank you!")
+```
+
+**After running, practice.txt will contain:**
+
+```
+Hello World!
+This is my first file handling practice.
+I am learning python programming.
+File handling is very important in programming.
+Thank you!
+```
+
+**Explanation:** The file is created (if it doesn't exist) and all lines are written to it.
+
+---
+
+### Question 2: Replace all occurrences of "Handling" with "python"
+
+```python
+# Step 1: Read the file
+with open("practice.txt", "r") as f:
+    data = f.read()
+
+# Step 2: Replace the word
+new_data = data.replace("Handling", "python")
+print(new_data)
+
+# Step 3: Write back to the file
+with open("practice.txt", "w") as f:
+    f.write(new_data)
+```
+
+**Original content:**
+
+```
+Hello World!
+This is my first file Handling practice.
+I am learning python programming.
+File Handling is very important in programming.
+Thank you!
+```
+
+**After replacement:**
+
+```
+Hello World!
+This is my first file python practice.
+I am learning python programming.
+File python is very important in programming.
+Thank you!
+```
+
+**Explanation:**
+- Read the entire file content
+- Use `replace()` to change "Handling" to "python"
+- Write the modified content back to the file
+
+---
+
+### Question 3: Find which line the word "Hello" occurs first
+
+```python
+def check_for_lines():
+    word = "Hello"
+    data = True
+    line_no = 1
+    
+    with open("practice.txt", "r") as f:
+        while data:
+            data = f.readline()
+            if(word in data):
+                print("Word found at line:", line_no)
+                return line_no
+            line_no += 1
+    
+    return -1
+
+check_for_lines()
+```
+
+**Output:**
+
+```
+Word found at line: 1
+```
+
+**Explanation:**
+- The function reads the file line by line
+- Checks if the word "Hello" is in each line
+- Returns the line number when found
+- If word is not found, returns -1
+
+**Step-by-step breakdown:**
+- Line 1: "Hello World!" - Contains "Hello" ✓ → Stop and return 1
+
+---
+
+### Question 4: Count even numbers from a file
+
+First, create a file `numbers.txt` with this content:
+
+```
+1,2,3,4,5,6,7,8,9,10
+```
+
+```python
+count = 0
+
+with open("numbers.txt", "r") as f:
+    data = f.read()
+    
+    nums = data.split(",")  # Split by comma
+    
+    for val in nums:
+        if(int(val) % 2 == 0):
+            count += 1
+
+print("Count of even numbers:", count)
+```
+
+**Output:**
+
+```
+Count of even numbers: 5
+```
+
+**Explanation:**
+- Read the file content: `"1,2,3,4,5,6,7,8,9,10"`
+- Split by comma: `['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']`
+- Convert each to integer and check if even
+- Even numbers: 2, 4, 6, 8, 10 → Count = 5
+
+**Detailed breakdown:**
+
+```
+Numbers: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+Checking each:
+1 % 2 = 1 (odd)
+2 % 2 = 0 (even) ✓ count = 1
+3 % 2 = 1 (odd)
+4 % 2 = 0 (even) ✓ count = 2
+5 % 2 = 1 (odd)
+6 % 2 = 0 (even) ✓ count = 3
+7 % 2 = 1 (odd)
+8 % 2 = 0 (even) ✓ count = 4
+9 % 2 = 1 (odd)
+10 % 2 = 0 (even) ✓ count = 5
+
+Final count: 5
+```
+
+---
+
+## Common File Operations - Complete Examples
+
+### Example 1: Creating a Log File
+
+```python
+import datetime
+
+with open("log.txt", "a") as f:
+    current_time = datetime.datetime.now()
+    f.write(f"\n[{current_time}] User logged in")
+```
+
+**log.txt will contain:**
+
+```
+[2026-01-08 14:30:25.123456] User logged in
+```
+---
+
+### Example 2: Reading and Processing Data
+
+```python
+# Reading student marks and calculating average
+with open("marks.txt", "r") as f:
+    marks = f.read().split(",")
+    marks = [int(m) for m in marks]
+    
+    average = sum(marks) / len(marks)
+    print(f"Average marks: {average}")
+```
+
+**If marks.txt contains:** `85,90,78,92,88`
+
+**Output:**
+
+```
+Average marks: 86.6
+```
+
+---
+
+### Example 3: Copying File Content
+
+```python
+# Copy content from one file to another
+with open("source.txt", "r") as source:
+    content = source.read()
+
+with open("destination.txt", "w") as dest:
+    dest.write(content)
+
+print("File copied successfully!")
+```
+
+---
+
+## Best Practices for File Handling
+
+1. **Always use "with" statement** - It automatically closes files
+2. **Check if file exists** before deleting or reading
+3. **Handle exceptions** to avoid program crashes
+4. **Close files** if not using "with" statement
+5. **Use appropriate mode** (r, w, a) based on your needs
+
+### Example with error handling:
+
+```python
+try:
+    with open("demo.txt", "r") as f:
+        data = f.read()
+        print(data)
+except FileNotFoundError:
+    print("File does not exist!")
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+
+---
+
+## Summary
+
+In this section, we learned:
+
+### Modules
+- Files containing Python code that can be reused
+- Created by saving code with `.py` extension
+- Imported using `import module_name`
+
+### File Types:
+- **Text files** (readable)
+- **Binary files** (non-readable)
+
+### File Modes:
+- **r** - Read
+- **w** - Write (overwrites)
+- **a** - Append
+- **r+, w+, a+** - Read and write combinations
+
+### File Operations:
+- `open()` - Open a file
+- `read()` - Read entire file
+- `readline()` - Read one line
+- `write()` - Write to file
+- `close()` - Close file
+
+### Key Concepts:
+- **with Statement** - Automatically handles file closing
+- **OS Module** - Used for file deletion and other system operations
+
+### Practice Applications:
+- Creating and writing files
+- Finding and replacing text
+- Searching for words in files
+- Processing data from files
+
+**File handling is essential for storing and retrieving data permanently in Python programs!** 🚀
+
+---
+
